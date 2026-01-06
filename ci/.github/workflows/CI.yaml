@@ -1,0 +1,48 @@
+name: Model Inference CI
+
+on:
+# Runs at 00:00 every Sunday
+  schedule:
+    - cron: '0 0 * * 0'
+  workflow_dispatch:
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+
+      - name: Install Dependencies
+        run: pip install pyyaml
+
+      - name: Run Model Tests
+        run: python run_tests.py
+
+      - name: Post to failure to Slack Channel
+        if: ${{ failure() }}
+        id: slack_failure
+        uses: slackapi/slack-github-action@v2.1.1
+        with:
+            method: chat.postMessage
+            token: ${{ secrets.SLACK_BOT_TOKEN }}
+            payload: |
+              channel: ${{ secrets.SLACK_CHANNEL }}
+              text: "❌ *Model Integration Test Failed*\n*Repo:* ${{ github.repository }}\n*Run:* <${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}|View Logs>"
+
+      - name: Post to success to Slack Channel
+        if: ${{ success() }}
+        id: slack_success
+        uses: slackapi/slack-github-action@v2.1.1
+        with:
+            method: chat.postMessage
+            token: ${{ secrets.SLACK_BOT_TOKEN }}
+            payload: |
+              channel: ${{ secrets.SLACK_CHANNEL }}
+              text: "✅ *Model Integration Test Succeeded*\n*Repo:* ${{ github.repository }}\n*Run:* <${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}|View Results>"

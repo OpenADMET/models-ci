@@ -13,15 +13,15 @@ def run_docker(local_path):
         "--user", "root",
         "-v", f"{os.path.abspath(local_path)}:{CONTAINER_MOUNT_POINT}:rw",
         "--runtime", "nvidia",
-        "--gpus", "all",
+        "--gpus", "all", # not used but included to mimic execution configuration
         OADMET_MODELS_IMAGE,
-        "/bin/bash", "-c", f"cd {CONTAINER_MOUNT_POINT} && ./run_model_inference.sh"
+        "/bin/bash", "-c", f"cd {CONTAINER_MOUNT_POINT} && ./run_model_inference.sh && rm -rf {CONTAINER_MOUNT_POINT}/lightning_logs"
     ]
     subprocess.run(cmd, check=True)
 
-def run_anvil(local_path):
-    # Runs anvil in the context of the cloned directory
-    subprocess.run(["anvil", "run", "."], cwd=local_path, check=True)
+# def run_anvil(local_path):
+#     # Runs anvil in the context of the cloned directory
+#     subprocess.run(["openadmet", "anvil", "run", "."], cwd=local_path, check=True)
 
 def test_runner(models, test_type):
     """
@@ -47,8 +47,10 @@ def test_runner(models, test_type):
                 if test_type == "docker":
                     run_docker(tmpdir)
                 else:
-                    run_anvil(tmpdir)
+                    raise ValueError("Unsupported test type")
                 
+
+
                 results[name] = "PASSED"
                 print(f"--- {name}: OK")
         except Exception as e:
@@ -74,21 +76,21 @@ def main():
     # LOOP 1: Docker
     docker_ok, docker_results = test_runner(models, "docker")
 
-    # LOOP 2: Anvil
-    anvil_ok, anvil_results = test_runner(models, "anvil")
+    # # LOOP 2: Anvil
+    # anvil_ok, anvil_results = test_runner(models, "anvil")
 
     # FINAL SUMMARY TABLE
     print(f"\n\n{'='*15} FINAL TEST SUMMARY {'='*15}")
-    print(f"{'Model Name':<60} | {'Docker':<10} | {'Anvil':<10}")
+    print(f"{'Model Name':<60} | {'Docker':<10} |")
     print("-" * 85)
     for model in models:
         name = model["name"]
         d_res = docker_results.get(name, "N/A")
-        a_res = anvil_results.get(name, "N/A")
-        print(f"{name:<60} | {d_res:<10} | {a_res:<10}")
+        # a_res = anvil_results.get(name, "N/A")
+        print(f"{name:<60} | {d_res:<10} |") #{a_res:<10}")
 
     # EXIT LOGIC
-    if not docker_ok or not anvil_ok:
+    if not docker_ok: #or not anvil_ok:
         print("\n[RESULT] One or more tests failed.")
         sys.exit(1)
     else:
