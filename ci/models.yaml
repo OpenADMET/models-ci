@@ -1,0 +1,9 @@
+models:
+
+  - name: cyp1a2-cyp2d6-cyp3a4-cyp3c9-chemeleon-baseline
+    ref: openadmet/cyp1a2-cyp2d6-cyp3a4-cyp3c9-chemeleon-baseline
+    url: https://huggingface.co/openadmet/cyp1a2-cyp2d6-cyp3a4-cyp3c9-chemeleon-baseline
+
+  - name: pxr-chemeleon-baseline
+    ref: openadmet/pxr-chemeleon-baseline
+    url: https://huggingface.co/openadmet/pxr-chemeleon-baseline
