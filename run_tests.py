@@ -12,8 +12,8 @@ def run_docker(local_path):
         "docker", "run", "--rm",
         "--user", "root",
         "-v", f"{os.path.abspath(local_path)}:{CONTAINER_MOUNT_POINT}:rw",
-        "--runtime", "nvidia",
-        "--gpus", "all", # not used but included to mimic execution configuration
+        # "--runtime", "nvidia",
+        # "--gpus", "all", # not used but included to mimic execution configuration
         OADMET_MODELS_IMAGE,
         "/bin/bash", "-c", f"cd {CONTAINER_MOUNT_POINT} && ./run_model_inference.sh && rm -rf {CONTAINER_MOUNT_POINT}/lightning_logs"
     ]
