@@ -7,3 +7,7 @@ models:
   - name: pxr-chemeleon-baseline
     ref: openadmet/pxr-chemeleon-baseline
     url: https://huggingface.co/openadmet/pxr-chemeleon-baseline
+
+  - name: microsomal-clearance-chemeleon-baseline
+    ref: openadmet/microsomal-clearance-chemeleon-baseline
+    url: https://huggingface.co/openadmet/microsomal-clearance-chemeleon-baseline
