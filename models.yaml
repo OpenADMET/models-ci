@@ -1,13 +1,21 @@
 models:
 
-  - name: cyp1a2-cyp2d6-cyp3a4-cyp3c9-chemeleon-baseline
-    ref: openadmet/cyp1a2-cyp2d6-cyp3a4-cyp3c9-chemeleon-baseline
-    url: https://huggingface.co/openadmet/cyp1a2-cyp2d6-cyp3a4-cyp3c9-chemeleon-baseline
+  - name: cyp1a2-cyp2d6-cyp3a4-cyp2c9-chemeleon-v1
+    ref: openadmet/cyp1a2-cyp2d6-cyp3a4-cyp2c9-chemeleon-v1
+    url: https://huggingface.co/openadmet/cyp1a2-cyp2d6-cyp3a4-cyp2c9-chemeleon-v1
 
   - name: pxr-chemeleon-baseline
     ref: openadmet/pxr-chemeleon-baseline
     url: https://huggingface.co/openadmet/pxr-chemeleon-baseline
 
-  - name: microsomal-clearance-chemeleon-baseline
-    ref: openadmet/microsomal-clearance-chemeleon-baseline
-    url: https://huggingface.co/openadmet/microsomal-clearance-chemeleon-baseline
+  - name: microsomal-clearance-chemeleon-v1
+    ref: openadmet/microsomal-clearance-chemeleon-v1
+    url: https://huggingface.co/openadmet/microsomal-clearance-chemeleon-v1
+
+  - name: herg-chemeleon-baseline
+    ref: openadmet/herg-chemeleon-baseline
+    url: https://huggingface.co/openadmet/herg-chemeleon-baseline
+
+  - name: permeability-logd-ppb-chemeleon-baseline
+    ref: openadmet/permeability-logd-ppb-chemeleon-baseline
+    url: https://huggingface.co/openadmet/permeability-logd-ppb-chemeleon-baseline
