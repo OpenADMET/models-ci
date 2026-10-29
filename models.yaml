@@ -63,7 +63,3 @@ models:
   - name: mpbp-chemprop_foundation_surrogate-v1
     ref: openadmet/mpbp-chemprop_foundation_surrogate-v1
     url: https://huggingface.co/openadmet/mpbp-chemprop_foundation_surrogate-v1
-
-  - name: chemprop-foundation-pretraining-weights
-    ref: openadmet/chemprop-foundation-pretraining-weights
-    url: https://huggingface.co/openadmet/chemprop-foundation-pretraining-weights
