@@ -19,3 +19,51 @@ models:
   - name: permeability-logd-ppb-chemeleon-baseline
     ref: openadmet/permeability-logd-ppb-chemeleon-baseline
     url: https://huggingface.co/openadmet/permeability-logd-ppb-chemeleon-baseline
+
+  - name: cyp1a2-cyp2d6-cyp3a4-cyp3c9-chemeleon-baseline
+    ref: openadmet/cyp1a2-cyp2d6-cyp3a4-cyp3c9-chemeleon-baseline
+    url: https://huggingface.co/openadmet/cyp1a2-cyp2d6-cyp3a4-cyp3c9-chemeleon-baseline
+
+  - name: pxr-chemeleon-v1
+    ref: openadmet/pxr-chemeleon-v1
+    url: https://huggingface.co/openadmet/pxr-chemeleon-v1
+
+  - name: 5ht2-chemeleon-baseline
+    ref: openadmet/5ht2-chemeleon-baseline
+    url: https://huggingface.co/openadmet/5ht2-chemeleon-baseline
+
+  - name: fxr-chemeleon-v1
+    ref: openadmet/fxr-chemeleon-v1
+    url: https://huggingface.co/openadmet/fxr-chemeleon-v1
+
+  - name: lxr-chemeleon-v1
+    ref: openadmet/lxr-chemeleon-v1
+    url: https://huggingface.co/openadmet/lxr-chemeleon-v1
+
+  - name: fxr-tabpfn-monroe-v1
+    ref: openadmet/fxr-tabpfn-monroe-v1
+    url: https://huggingface.co/openadmet/fxr-tabpfn-monroe-v1
+
+  - name: lxr-tabpfn-monroe-v1
+    ref: openadmet/lxr-tabpfn-monroe-v1
+    url: https://huggingface.co/openadmet/lxr-tabpfn-monroe-v1
+
+  - name: logd-chemprop_foundation_minimol-v1
+    ref: openadmet/logd-chemprop_foundation_minimol-v1
+    url: https://huggingface.co/openadmet/logd-chemprop_foundation_minimol-v1
+
+  - name: logd-chemprop_foundation_surrogate-v1
+    ref: openadmet/logd-chemprop_foundation_surrogate-v1
+    url: https://huggingface.co/openadmet/logd-chemprop_foundation_surrogate-v1
+
+  - name: mpbp-chemprop_foundation_minimol-v1
+    ref: openadmet/mpbp-chemprop_foundation_minimol-v1
+    url: https://huggingface.co/openadmet/mpbp-chemprop_foundation_minimol-v1
+
+  - name: mpbp-chemprop_foundation_surrogate-v1
+    ref: openadmet/mpbp-chemprop_foundation_surrogate-v1
+    url: https://huggingface.co/openadmet/mpbp-chemprop_foundation_surrogate-v1
+
+  - name: chemprop-foundation-pretraining-weights
+    ref: openadmet/chemprop-foundation-pretraining-weights
+    url: https://huggingface.co/openadmet/chemprop-foundation-pretraining-weights
