@@ -1,5 +1,9 @@
 models:
 
+  - name: cyp1a2-cyp2d6-cyp3a4-cyp2c9-cyp2b6-cyp2c8-cyp2c19-chemeleon-v2
+    ref: openadmet/cyp1a2-cyp2d6-cyp3a4-cyp2c9-cyp2b6-cyp2c8-cyp2c19-chemeleon-v2
+    url: https://huggingface.co/openadmet/cyp1a2-cyp2d6-cyp3a4-cyp2c9-cyp2b6-cyp2c8-cyp2c19-chemeleon-v2
+
   - name: cyp1a2-cyp2d6-cyp3a4-cyp2c9-chemeleon-v1
     ref: openadmet/cyp1a2-cyp2d6-cyp3a4-cyp2c9-chemeleon-v1
     url: https://huggingface.co/openadmet/cyp1a2-cyp2d6-cyp3a4-cyp2c9-chemeleon-v1
