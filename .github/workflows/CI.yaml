@@ -23,6 +23,8 @@ jobs:
         run: pip install pyyaml
 
       - name: Run Model Tests
+        env:
+          TABPFN_TOKEN: ${{ secrets.TABPFN_TOKEN }}
         run: python run_tests.py
 
       - name: Post to failure to Slack Channel

@@ -12,6 +12,13 @@ def run_docker(local_path):
         "docker", "run", "--rm",
         "--user", "root",
         "-v", f"{os.path.abspath(local_path)}:{CONTAINER_MOUNT_POINT}:rw",
+    ]
+    # TabPFN-backed models download foundation weights at load time, gated behind
+    # Prior Labs' own license acceptance; forward the token so that succeeds
+    tabpfn_token = os.environ.get("TABPFN_TOKEN")
+    if tabpfn_token:
+        cmd += ["-e", f"TABPFN_TOKEN={tabpfn_token}"]
+    cmd += [
         # "--runtime", "nvidia",
         # "--gpus", "all", # not used but included to mimic execution configuration
         OADMET_MODELS_IMAGE,
