@@ -11,6 +11,10 @@ def run_docker(local_path):
     cmd = [
         "docker", "run", "--rm",
         "--user", "root",
+        # Each test run reuses this job's docker daemon, so without --pull always the
+        # first model to run pins whatever :main happened to resolve to at that moment
+        # for every later model too, silently testing a stale image for the rest of the job
+        "--pull", "always",
         "-v", f"{os.path.abspath(local_path)}:{CONTAINER_MOUNT_POINT}:rw",
     ]
     # TabPFN-backed models download foundation weights at load time, gated behind
@@ -18,16 +22,10 @@ def run_docker(local_path):
     tabpfn_token = os.environ.get("TABPFN_TOKEN")
     if tabpfn_token:
         cmd += ["-e", f"TABPFN_TOKEN={tabpfn_token}"]
+
     cmd += [
         # "--runtime", "nvidia",
         # "--gpus", "all", # not used but included to mimic execution configuration
-    ]
-
-    tabpfn_token = os.environ.get("TABPFN_TOKEN")
-    if tabpfn_token:
-        cmd += ["-e", f"TABPFN_TOKEN={tabpfn_token}"]
-
-    cmd += [
         OADMET_MODELS_IMAGE,
         "/bin/bash", "-c", f"cd {CONTAINER_MOUNT_POINT} && ./run_model_inference.sh && rm -rf {CONTAINER_MOUNT_POINT}/lightning_logs"
     ]
